@@ -8,4 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class Announcement extends Model
 {
     use HasFactory;
+    
+    protected $fillable = [
+        'personal_id',
+        'head',
+        'body',
+        'deleted_at',
+        'isActive',
+    ];
 }

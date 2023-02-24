@@ -15,10 +15,10 @@ class CreateCardsTable extends Migration
     {
         Schema::create('cards', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->foreignId('product_id')
-                ->constrained('products')
-                ->onUpdate('cascade')
-                ->onDelete('cascade');
+            $table->string('user_id');
+            $table->string('product_id');
+            $table->integer('quantity');
+            $table->decimal('price');
             $table->timestamps();
         });
     }

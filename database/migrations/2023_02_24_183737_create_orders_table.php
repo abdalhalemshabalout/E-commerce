@@ -15,10 +15,11 @@ class CreateOrdersTable extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->foreignId('product_id')
-                ->constrained('products')
-                ->onUpdate('cascade')
-                ->onDelete('cascade');
+            $table->string('product_id');
+            $table->string('user_id');
+            $table->integer('amount');
+            $table->string('payment_status');
+            $table->string('shipping_address');
             $table->timestamps();
         });
     }

@@ -22,7 +22,9 @@ class CreateProductsTable extends Migration
             $table->string('name');
             $table->string('img');
             $table->string('size');
-            $table->string('price');
+            $table->text('description'); 
+            $table->decimal('price', 8, 2);
+            $table->integer('quantity');
             $table->timestamps();
         });
     }

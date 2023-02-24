@@ -15,15 +15,11 @@ class CreateOrderDetailsTable extends Migration
     {
         Schema::create('order_details', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->foreignId('customer_id')
-                ->constrained('customers')
-                ->onUpdate('cascade')
-                ->onDelete('cascade');
-            $table->foreignId('payment_id')
-                ->constrained('payments')
-                ->onUpdate('cascade')
-                ->onDelete('cascade');
-            $table->integer('total');
+            $table->string('product_id');
+            $table->string('product_name');
+            $table->string('product_price');
+            $table->string('quantity');
+            $table->string('total_price');
             $table->timestamps();
         });
     }

@@ -15,11 +15,17 @@ class CreatePaymentsTable extends Migration
     {
         Schema::create('payments', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->foreignId('user_id')
+                ->constrained('customers')
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
             $table->foreignId('order_id')
                 ->constrained('orders')
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
             $table->integer('amount');
+            $table->string('payment_status');
+            $table->string('details');
             $table->timestamps();
         });
     }
