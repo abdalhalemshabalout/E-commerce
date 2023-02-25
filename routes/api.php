@@ -2,6 +2,9 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Api\AuthController;
+use App\Http\Controllers\Api\UserController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -16,4 +19,32 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
+});
+   
+
+Route::group([
+    'prefix' => 'auth'
+], function () {
+    Route::post('register-admin', [AuthController::class, 'registerAdmin']);
+    Route::post('register-customer', [AuthController::class, 'registerCustomer']);
+    Route::post('login', [AuthController::class, 'login']);
+    Route::post('logout', [AuthController::class, 'logout'])->middleware('auth:sanctum');
+});
+Route::group([
+    'prefix' => 'admin'
+], function () {
+    Route::post('create-employee', [UserController::class, 'CreateEmployee'])->middleware('auth:sanctum');
+    Route::delete('delete-employee/{id}', [UserController::class, 'deleteEmployee'])->middleware('auth:sanctum');
+
+});
+
+Route::group([
+    'prefix' => 'employee'
+], function () {
+       
+});
+Route::group([
+    'prefix' => 'customer'
+], function () {
+
 });
