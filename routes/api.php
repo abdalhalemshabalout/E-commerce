@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\UserController;
 use App\Http\Controllers\Api\CategoryController;
+use App\Http\Controllers\Api\ProductController;
 
 
 /*
@@ -45,6 +46,10 @@ Route::group([
     Route::post('add-category', [CategoryController::class, 'addCategory'])->middleware('auth:sanctum');
     Route::post('update-category/{id}', [CategoryController::class, 'updateCategory'])->middleware('auth:sanctum');
     Route::delete('delete-category/{id}', [CategoryController::class, 'deleteCategory'])->middleware('auth:sanctum');
+
+    //Product
+    Route::post('add-product', [ProductController::class, 'addProduct'])->middleware('auth:sanctum');
+    Route::delete('delete-product/{id}', [ProductController::class, 'deleteProduct'])->middleware('auth:sanctum');
 
 });
 
