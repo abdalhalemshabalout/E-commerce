@@ -10,10 +10,8 @@ class Announcement extends Model
     use HasFactory;
     
     protected $fillable = [
-        'personal_id',
+        'employee_id',
         'head',
         'body',
-        'deleted_at',
-        'isActive',
     ];
 }

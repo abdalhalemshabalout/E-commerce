@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\AnnouncementController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\AuthController;
@@ -56,7 +57,10 @@ Route::group([
 Route::group([
     'prefix' => 'employee'
 ], function () {
-       
+    //Announcement
+    Route::post('add-announcement', [AnnouncementController::class, 'addAnnouncement'])->middleware('auth:sanctum');
+    Route::post('update-announcement/{id}', [AnnouncementController::class, 'updateAnnouncement'])->middleware('auth:sanctum');
+    Route::delete('delete-announcement/{id}', [AnnouncementController::class, 'deleteAnnouncement'])->middleware('auth:sanctum');
 });
 Route::group([
     'prefix' => 'customer'
